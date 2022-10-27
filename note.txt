@@ -1,0 +1,12 @@
+get detail api
+
+validation example stock
+helpers standar response api
+
+intall 
+dot env
+morgan
+cors
+
+readme
+script development production
