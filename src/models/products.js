@@ -2,7 +2,7 @@ const Pool = require("./../config/db");
 
 const selectData = () => {
   return Pool.query(
-    `SELECT products.name,products.stock,  products.price, category.name as category FROM products  INNER JOIN category ON products.category_id = category.id `
+    `SELECT products.name,products.stock,  products.price, category.name as category, products.photo FROM products  JOIN category ON products.category_id = category.id `
   );
 };
 
@@ -13,9 +13,10 @@ const selectDatabyId = (id) => {
 };
 
 const insertData = (data) => {
-  const { name, stock, price } = data;
+  const { name, stock, price,photo } = data;
+  console.log('data',data)
   return Pool.query(
-    `INSERT INTO products(name,stock,price) VALUES('${name}',${stock},${price})`
+    `INSERT INTO products(name,stock,price,category_id,photo) VALUES('${name}',${stock},${price},1,'${photo}')`
   );
 };
 

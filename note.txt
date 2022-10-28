@@ -1,12 +1,18 @@
-get detail api
+jwt 
 
-validation example stock
-helpers standar response api
+token handle
 
-intall 
-dot env
-morgan
-cors
+profile api
 
-readme
-script development production
+{
+  "success": false,
+  "statusCode": 200,
+  "data": {
+    "id": "eee82aa6-fb18-4912-b236-1d87d7c333be",
+    "email": "easy@pijar.id",
+    "fullname": "easy",
+    "role": "toko",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NjkyODAyNSwiZXhwIjoxNjY2OTMxNjI1fQ.Foh-hOx35eSY0suMkIpn0J_wWS70BGGR6HvjLu22LlA"
+  },
+  "message": "login success"
+}

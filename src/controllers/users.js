@@ -2,12 +2,15 @@ const { response } = require("../middlewares/common");
 const {create, findEmail} = require("../models/users");
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } =  require('uuid');
-
+const {generateToken} = require('../helpers/auth')
 
 const UsersController = {
     insert: async  (req, res, next) => {
         let {rows:[users]} = await findEmail(req.body.email)
-        if(users.email){
+        console.log('role',req.params.role)
+        let role = req.params.role
+
+        if(users){
             return response(res, 404, false, "email already use"," register fail") 
         }
 
@@ -18,7 +21,7 @@ const UsersController = {
             email : req.body.email,
             password ,
             fullname : req.body.fullname,
-            role: "toko"
+            role
         }
         try{
             const result = await create(data)
@@ -40,13 +43,17 @@ const UsersController = {
         }
         const password = req.body.password
         const validation = bcrypt.compareSync(password,users.password)
-        // delete users.password
         if(!validation){
             return response(res, 404, false, null,"wrong password")
         }
-        
-        response(res, 200, false, "token 12131231","login success")
-    }
+        delete users.password
+        let payload = {
+            email: users.email,
+            role: users.role
+        }
+        users.token = generateToken(payload)
+        response(res, 200, false, users,"login success")
+    },
 }
 
 exports.UsersController = UsersController;

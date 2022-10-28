@@ -110,3 +110,5 @@ CREATE Table users(
 INSERT INTO users(id,email,password,fullname,role) VALUES('1','ean@ean.id','123456','ean ean','admin');
 
 SELECT * FROM users where email='ean@ean.id';
+
+ALTER TABLE products ADD photo VARCHAR(255);

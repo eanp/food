@@ -10,10 +10,11 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 
-const port = 3000;
+const port = process.env.PORT;
 app.use(bodyParser.json());
 
 app.use("/", mainRouter)
+app.use("/img", express.static('./upload'))
 
 app.all("*",(req,res,next)=> {
   response(res,404,false,null,"404 Not Found")
