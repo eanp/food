@@ -14,6 +14,7 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 
 app.use("/", mainRouter)
+app.use("/img", express.static('./tmp'))
 
 app.all("*",(req,res,next)=> {
   response(res,404,false,null,"404 Not Found")
