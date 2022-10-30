@@ -16,9 +16,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: multerS3({
-      s3: s3,
-      bucket: process.env.BUCKET,
-      metadata: function (req, file, cb) {
+        s3: s3,
+        bucket: process.env.BUCKET,
+        metadata: function (req, file, cb) {
+          const uniq = Date.now() + Math.round(Math.random() * 1E9)
         cb(null, {fieldName:file.fieldname+'-'+uniq+'.png'});
       },
       key: function (req, file, cb) {
