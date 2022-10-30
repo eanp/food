@@ -2,11 +2,11 @@
   "success": false,
   "statusCode": 200,
   "data": {
-    "id": "eee82aa6-fb18-4912-b236-1d87d7c333be",
+    "id": "8b9a2a67-117d-496f-b1a0-4ae9bf8ddbd1",
     "email": "easy@pijar.id",
     "fullname": "easy",
     "role": "toko",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NzEyNTU5MCwiZXhwIjoxNjY3MTI5MTkwfQ.1NzcbZOiRFmJgVX1--MkrS8grAQ9cDiJ-AlY750h2j0"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NzEyODY1NCwiZXhwIjoxNjY3MTMyMjU0fQ.hQ13uZoovXzW6VqZQ3hn2MIoUYV-y5seMkm8hr22hRg"
   },
   "message": "login success"
 }
