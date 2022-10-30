@@ -1,5 +1,6 @@
 const ModelProduct = require("../models/products");
 const { response } = require("../middlewares/common");
+const client = require("../config/redis")
 const ProductController = {
   update: (req, res, next) => {
     ModelProduct.updateData(req.params.id, req.body)
@@ -23,8 +24,10 @@ const ProductController = {
       },
       getProductDetail: (req, res, next) => {
         ModelProduct.selectDatabyId(req.params.id)
-        .then((result) => 
-        response(res, 200, true, result.rows, "get data success"))
+        .then((result) => {
+          client.setEx(`product/${req.params.id}`,60*60,JSON.stringify(result.rows))
+          response(res, 200, true, result.rows, "get data success")
+        })
         .catch((err) =>response(res, 404, false, err, "get data fail"));
       },
       insert: (req, res, next) => {
