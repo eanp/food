@@ -8,6 +8,18 @@ const role = (req,res,next) => {
     }
     return response(res, 404, false, null,"wrong role users")
 }
+const roleToko = (req,res,next) => {
+    let token
+        let auth = req.headers.authorization
+        token = auth.split(" ")[1]
+        let decode = jwt.verify(token,key)
+        let role = decode.role
+    if(role == "toko"){
+        return next()
+    } else {
+        return response(res, 404, false, null,"user not toko")
+    }
+}
 
 const protect = (req,res,next) => {
     try{
@@ -33,4 +45,4 @@ const protect = (req,res,next) => {
     }
 }
 
-module.exports = {role,protect}
+module.exports = {role,protect,roleToko}

@@ -1,9 +1,9 @@
 const Pool = require("./../config/db");
 
 const create = (data) => {
-    const {id,email,password,fullname,role} = data
+    const {id,email,password,fullname,role,otp} = data
     return new Promise ((resolve,reject)=>
-        Pool.query(`INSERT INTO users(id,email,password,fullname,role) VALUES('${id}','${email}','${password}','${fullname}','${role}')`,(err,result)=>{
+        Pool.query(`INSERT INTO users(id,email,password,fullname,role,verif,otp) VALUES('${id}','${email}','${password}','${fullname}','${role}',0,'${otp}')`,(err,result)=>{
             if(!err){
                 resolve(result)
             } else {
@@ -24,4 +24,15 @@ const findEmail = (email) => {
     }))
 }
 
-module.exports = {create,findEmail}
+const verification = (email) => {
+    return new Promise ((resolve,reject)=>
+        Pool.query(`UPDATE users SET verif=1 WHERE "email"='${email}'`,(err,result)=>{
+            if(!err){
+                resolve(result)
+            } else {
+                reject(err)
+            }
+    }))
+}
+
+module.exports = {create,findEmail,verification}

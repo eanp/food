@@ -6,7 +6,32 @@
     "email": "easy@pijar.id",
     "fullname": "easy",
     "role": "toko",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NzEyODY1NCwiZXhwIjoxNjY3MTMyMjU0fQ.hQ13uZoovXzW6VqZQ3hn2MIoUYV-y5seMkm8hr22hRg"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NzEyOTM3NiwiZXhwIjoxNjY3MTMyOTc2fQ.lkqhOqVhkkrqEK1FiwRckoluFiSuMpIQV8I5qmcTa_o"
+  },
+  "message": "login success"
+}
+
+{
+  "success": false,
+  "statusCode": 200,
+  "data": {
+    "id": "eee82aa6-fb18-4912-b236-1d87d7c333be",
+    "email": "easy@pijar.id",
+    "fullname": "easy",
+    "role": "toko",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhc3lAcGlqYXIuaWQiLCJyb2xlIjoidG9rbyIsImlhdCI6MTY2NzM2MzkyMCwiZXhwIjoxNjY3MzY3NTIwfQ.pEunDSrDyHO7OPYJV9vOedhPKw_JO_maO59skX66brA"
+  },
+  "message": "login success"
+}
+{
+  "success": false,
+  "statusCode": 200,
+  "data": {
+    "id": "e5f64bee-4414-4983-8c06-445cee7fa463",
+    "email": "ean@id",
+    "fullname": "undefined",
+    "role": "cust",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVhbkBpZCIsInJvbGUiOiJjdXN0IiwiaWF0IjoxNjY3MzY0MDU1LCJleHAiOjE2NjczNjc2NTV9.qQ1difKs6hxOFL5XAeOsCS25Ly97FKfM6C6gIR_DC44"
   },
   "message": "login success"
 }

@@ -112,3 +112,6 @@ INSERT INTO users(id,email,password,fullname,role) VALUES('1','ean@ean.id','1234
 SELECT * FROM users where email='ean@ean.id';
 
 ALTER TABLE products ADD photo VARCHAR(255);
+
+ALTER TABLE users ADD verif INT;
+ALTER TABLE users ADD OTP VARCHAR(32);
