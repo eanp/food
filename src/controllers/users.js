@@ -39,7 +39,8 @@ const UsersController = {
             const result = await create(data)
             if(result){
                 console.log(result)
-                let sendEmail = await email(data.email,otp,`https://${Host}:${Port}/${email}/${otp}`,data.fullname)
+                let verifUrl = `http://${Host}:${Port}/${req.body.email}/${otp}`
+                let sendEmail =  email(data.email,otp,verifUrl,data.fullname)
                 if(sendEmail == 'email not sent!'){
                     return response(res, 404, false, null, "register fail")
                 }
@@ -75,21 +76,15 @@ const UsersController = {
         users.token = generateToken(payload)
         response(res, 200, false, users,"login success")
     },
-    email: async(req,res,next)=>{
-        let sendEmail = await email(req.params.email,'Kode OTP Food','https://localhost:3000/products')
-        if(sendEmail){
-            response(res, 200, true,null,"send email success")
-        }
-    },
     otp: async(req,res,next)=>{
-        console.log('email',req.body.email)
-        console.log('password',req.body.otp)
-        let {rows:[users]} = await findEmail(req.body.email)
+        console.log('email',req.params.email)
+        console.log('password',req.params.otp)
+        let {rows:[users]} = await findEmail(req.params.email)
         if(!users){
             return response(res, 404, false, null," email not found")
         }
-        if(users.otp ==req.body.otp ){
-            const result = await verification(req.body.email)
+        if(users.otp ==req.params.otp ){
+            const result = await verification(req.params.email)
             return response(res, 200, true, result," verification email success")
         }
         return response(res, 404, false, null," wrong otp please check your email")
