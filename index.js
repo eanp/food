@@ -7,11 +7,12 @@ const mainRouter = require('./src/routes/index')
 const { response } = require("./src/middlewares/common");
 const app = express();
 
+const port = process.env.PORT;
 app.use(morgan("dev"));
 app.use(cors());
 
-const port = process.env.PORT;
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 
 app.use("/", mainRouter)
 app.use("/img", express.static('./tmp'))

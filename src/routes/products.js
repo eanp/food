@@ -7,9 +7,9 @@ const upload  = require("../middlewares/upload");
 // const {hitCache,clearCache}  = require("../middlewares/redis");
 
 router.get("/",ProductController.getProduct);
-router.get("/:id",protect,ProductController.getProductDetail);
-router.post("/",protect,roleToko,upload.single('photo'), ProductController.insert);
-router.put("/:id",protect,roleToko,ProductController.update);
-router.delete("/:id",protect,roleToko,ProductController.delete);
+router.get("/:id",ProductController.getProductDetail);
+router.post("/",upload.single('photo'), ProductController.insert);
+router.put("/:id",ProductController.update);
+router.delete("/:id",ProductController.delete);
 
 module.exports = router;

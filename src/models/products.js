@@ -16,7 +16,7 @@ const insertData = (data) => {
   const { name, stock, price,photo } = data;
   console.log('data',data)
   return Pool.query(
-    `INSERT INTO products(name,stock,price,category_id,photo) VALUES('${name}',${stock},${price},1,'${hpoto}')`
+    `INSERT INTO products(name,stock,price,category_id,photo) VALUES('${name}',${stock},${price},1,'${photo}')`
   );
 };
 

@@ -1,6 +1,8 @@
 const ModelProduct = require("../models/products");
 const { response } = require("../middlewares/common");
+const cloudinary = require("../config/photo")
 // const client = require("../config/redis")
+
 const ProductController = {
   update: (req, res, next) => {
     ModelProduct.updateData(req.params.id, req.body)
@@ -30,18 +32,20 @@ const ProductController = {
         })
         .catch((err) =>response(res, 404, false, err, "get data fail"));
       },
-      insert: (req, res, next) => {
-        const Port = process.env.PORT
-        const Host = process.env.HOST
-        const photo = req.file.filename
-        const uri = `http://${Host}:${Port}/img/${photo}`
-        req.body.photo = uri
-        req.body.stock = parseInt(req.body.stock)
-        req.body.price = parseInt(req.body.price)
-        ModelProduct.insertData(req.body)
-        .then((result) =>
-        response(res, 200, true, result, "input data success"))
-      .catch((err) =>response(res, 404, false, err, "input data fail"));
+      insert: async(req, res, next) => {
+        try{
+          req.body.stock = parseInt(req.body.stock)
+          req.body.price = parseInt(req.body.price)
+          req.body.category_id = parseInt(req.body.category_id)
+        // cloudinary upload to folder food
+        const image = await cloudinary.uploader.upload(req.file.path, { folder: 'food' })
+        // get url cloudinary
+        req.body.photo = image.url
+        await ModelProduct.insertData(req.body)
+        return response(res, 200, true, req.body, "input data success")
+      } catch (e){
+        return response(res, 404, false, e, "input data fail")
+      }
   },
 };
 
