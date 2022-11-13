@@ -9,7 +9,7 @@ const upload  = require("../middlewares/upload");
 router.get("/",ProductController.getProduct);
 router.get("/:id",ProductController.getProductDetail);
 router.post("/",upload.single('photo'), ProductController.insert);
-router.put("/:id",ProductController.update);
+router.put("/:id",upload.single('photo'),ProductController.update);
 router.delete("/:id",ProductController.delete);
 
 module.exports = router;
